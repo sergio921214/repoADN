@@ -1,0 +1,1 @@
+insert into auto(placa, tipoCombustible,rentado,precioPorDia,multiplicadorFinSemana) values (:placa, :tipoCombustible, 0, :precioPorDia, :multiplicadorFinSemana)

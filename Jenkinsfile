@@ -13,11 +13,7 @@ pipeline {
   //Una sección que define las herramientas “preinstaladas” en Jenkins
   tools {
     jdk 'JDK8_Centos' //Preinstalada en la Configuración del Master
-<<<<<<< HEAD
-    gradle 'Gradle4.5_Centos' //Preinstalada en la Configuración del Master
-=======
     gradle 'Gradle5.0_Centos' //Preinstalada en la Configuración del Master
->>>>>>> e5e5b103b19de522e097271e7bd1a23702a3cd77
   }
 
   //Aquí comienzan los “items” del Pipeline
@@ -34,7 +30,7 @@ pipeline {
             submoduleCfg: [], 
             userRemoteConfigs: [[
             credentialsId: 'GitHub_sergio921214', 
-            url:'https://github.com/sergio921214/repoADN.git'
+            url:'https://github.com/sergio921214/carrenting.git'
             ]]
             ])
 
@@ -44,20 +40,10 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Unit Tests<------------"
-<<<<<<< HEAD
-        sh 'gradle --b ./build.gradle clean'
-        sh 'gradle --b ./build.gradle test'
-        sh 'gradle --b ./build.gradle jacocoTestReport'
-<<<<<<<< HEAD:Jenkinsfile
-        echo "------------>Unit Tests Finished<------------"
-========
->>>>>>>> e5e5b103b19de522e097271e7bd1a23702a3cd77:java-arquitectura-hexagonal/Jenkinsfile
-=======
         sh 'gradle --b ./java-arquitectura-hexagonal/microservicio/build.gradle clean'
         sh 'gradle --b ./java-arquitectura-hexagonal/microservicio/build.gradle test'
         sh 'gradle --b ./java-arquitectura-hexagonal/microservicio/build.gradle jacocoTestReport'
         echo "------------>Unit Tests Finished<------------"
->>>>>>> e5e5b103b19de522e097271e7bd1a23702a3cd77
       }
     }
 
@@ -73,16 +59,8 @@ sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallat
     stage('Build') {
       steps {
         echo "------------>Build<------------"
-<<<<<<< HEAD
-        sh 'gradle --b ./build.gradle build -x test'
-<<<<<<<< HEAD:Jenkinsfile
-        echo "------------>Build Finished<------------"
-========
->>>>>>>> e5e5b103b19de522e097271e7bd1a23702a3cd77:java-arquitectura-hexagonal/Jenkinsfile
-=======
         sh 'gradle --b ./java-arquitectura-hexagonal/microservicio/build.gradle build -x test'
         echo "------------>Build Finished<------------"
->>>>>>> e5e5b103b19de522e097271e7bd1a23702a3cd77
       }
     }  
   }

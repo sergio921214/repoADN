@@ -34,7 +34,7 @@ pipeline {
             submoduleCfg: [], 
             userRemoteConfigs: [[
             credentialsId: 'GitHub_sergio921214', 
-            url:'https://github.com/sergio921214/autorentingADN.git'
+            url:'https://github.com/sergio921214/repoADN.git'
             ]]
             ])
 

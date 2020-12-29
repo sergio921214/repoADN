@@ -30,7 +30,7 @@ pipeline {
             submoduleCfg: [], 
             userRemoteConfigs: [[
             credentialsId: 'GitHub_sergio921214', 
-            url:'https://github.com/sergio921214/carrenting.git'
+            url:'https://github.com/sergio921214/repoADN.git'
             ]]
             ])
 

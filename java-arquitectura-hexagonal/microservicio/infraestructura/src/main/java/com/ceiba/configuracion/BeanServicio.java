@@ -7,7 +7,7 @@ import com.ceiba.usuario.servicio.ServicioCrearUsuario;
 import com.ceiba.usuario.servicio.ServicioEliminarUsuario;
 import com.ceiba.auto.servicio.ServicioCrearAuto;
 import com.ceiba.rentarauto.puerto.repositorio.RepositorioRentarAuto;
-import com.ceiba.rentarauto.servicio.ServicioSolicitarRentarAuto;
+import com.ceiba.rentarauto.servicio.ServicioCalcularRentaAuto;
 import com.ceiba.auto.servicio.ServicioCambiarRentadoAuto; 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,8 +41,8 @@ public class BeanServicio {
     }
     
     @Bean
-    public ServicioSolicitarRentarAuto servicioSolicitarRentarAuto() {
-        return new ServicioSolicitarRentarAuto();
+    public ServicioCalcularRentaAuto servicioSolicitarRentarAuto() {
+        return new ServicioCalcularRentaAuto();
     }
 	
 

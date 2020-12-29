@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ComandoSolicitarRentaAuto{
+public class ComandoCalculoRentaAuto{
 
     private String placa;
     private LocalDate fechaRenta;

@@ -1,7 +1,7 @@
 package com.ceiba.rentarauto.controlador;
 
 import com.ceiba.ComandoRespuesta;
-import com.ceiba.rentarauto.comando.ComandoSolicitarRentaAuto;
+import com.ceiba.rentarauto.comando.ComandoCalculoRentaAuto;
 import com.ceiba.rentarauto.comando.manejador.ManejadorSolicitarRentaAuto;
 
 //import com.ceiba.rentarauto.modelo.entidad.SolicitudRentarAuto;
@@ -28,9 +28,9 @@ public class ComandoControladorSolicitarRentaAuto {
 		
     }
 
-    @PostMapping("/solicitudRentarAuto")
-    @ApiOperation("Solicitar renta auto")
-    public ComandoRespuesta<Double ,Integer, String > crear(@RequestBody ComandoSolicitarRentaAuto comandoSolicitarRentaAuto) {
+    @PostMapping("/calculoRenta")
+    @ApiOperation("Calcular valor total de renta auto")
+    public ComandoRespuesta<Double ,Integer, String > crear(@RequestBody ComandoCalculoRentaAuto comandoSolicitarRentaAuto) {
         return manejadorSolicitarRentaAuto.ejecutar(comandoSolicitarRentaAuto);
     }
 

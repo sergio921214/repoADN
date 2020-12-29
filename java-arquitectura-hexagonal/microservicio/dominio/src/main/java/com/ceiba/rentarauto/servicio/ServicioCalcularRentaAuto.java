@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import com.ceiba.auto.modelo.dto.DtoAuto;
 import com.ceiba.dominio.excepcion.ExcepcionDomingo;
 
-public class ServicioSolicitarRentarAuto {
+public class ServicioCalcularRentaAuto {
 	
 	private static final String NO_SE_PUEDE_RENTAR_AUTO_UN_DOMINGO = "No se puede rentar auto un domingo";
 	

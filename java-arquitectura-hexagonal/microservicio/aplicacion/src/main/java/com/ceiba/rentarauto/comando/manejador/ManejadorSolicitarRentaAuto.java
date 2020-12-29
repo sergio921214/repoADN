@@ -18,8 +18,8 @@ import com.ceiba.auto.consulta.ManejadorObtenerAutoPorPlaca;
 import com.ceiba.tarifa.consulta.ManejadorObtenerTarifaPorTipoCombustible;
 import com.ceiba.tarifa.modelo.dto.DtoTarifa;
 import com.ceiba.auto.modelo.dto.DtoAuto;
+//import com.ceiba.dominio.excepcion.ExcepcionDomingo;
 import com.ceiba.dominio.excepcion.ExcepcionDomingo;
-
 
 @Component
 public class ManejadorSolicitarRentaAuto implements ManejadorComandoRespuesta<ComandoSolicitarRentaAuto, ComandoRespuesta<Double, Integer, String >> {

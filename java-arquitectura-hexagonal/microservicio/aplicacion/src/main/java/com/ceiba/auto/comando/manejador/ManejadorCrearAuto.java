@@ -12,7 +12,7 @@ import com.ceiba.auto.comando.ComandoAuto;
 import com.ceiba.auto.comando.fabrica.FabricaAuto;
 
 @Component
-public class ManejadorCrearAuto implements ManejadorComandoRespuesta<ComandoAuto, ComandoRespuesta<Long, Integer, String >> {
+public class ManejadorCrearAuto implements ManejadorComandoRespuesta<ComandoAuto, ComandoRespuesta<Long >> {
 
     private final FabricaAuto fabricaAuto;
     private final ServicioCrearAuto servicioCrearAuto;
@@ -22,8 +22,8 @@ public class ManejadorCrearAuto implements ManejadorComandoRespuesta<ComandoAuto
         this.servicioCrearAuto = servicioCrearAuto;
     }
 
-    public ComandoRespuesta<Long, Integer, String > ejecutar(ComandoAuto comandoAuto) {
+    public ComandoRespuesta<Long> ejecutar(ComandoAuto comandoAuto) {
     	Auto auto = this.fabricaAuto.crear(comandoAuto);
-        return new ComandoRespuesta<>(this.servicioCrearAuto.ejecutar(auto), 0, "succes");
+        return new ComandoRespuesta<>(this.servicioCrearAuto.ejecutar(auto));
     }
 }

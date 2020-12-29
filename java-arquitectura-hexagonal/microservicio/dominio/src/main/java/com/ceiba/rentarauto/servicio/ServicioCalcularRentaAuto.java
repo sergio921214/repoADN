@@ -1,6 +1,5 @@
 package com.ceiba.rentarauto.servicio;
 
-import static com.ceiba.dominio.ValidadorArgumento.validarDomingo;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -10,12 +9,12 @@ import com.ceiba.dominio.excepcion.ExcepcionDomingo;
 
 public class ServicioCalcularRentaAuto {
 	
-	private static final String NO_SE_PUEDE_RENTAR_AUTO_UN_DOMINGO = "No se puede rentar auto un domingo";
+
 	
 	
 	public Double ejecutar (DtoAuto auto, BigDecimal porcentaje, LocalDate fechaRenta, LocalDate fechaEntrega) throws ExcepcionDomingo {
 		
-		validarDomingo(fechaRenta, NO_SE_PUEDE_RENTAR_AUTO_UN_DOMINGO);
+		
 		
 		Double precioPorDia = auto.getPrecioPorDia();
 		BigDecimal multiplicadorFinSemana = auto.getMultiplicadorFinSemana();

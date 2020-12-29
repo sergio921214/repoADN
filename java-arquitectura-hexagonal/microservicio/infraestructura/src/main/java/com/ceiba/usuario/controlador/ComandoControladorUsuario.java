@@ -31,7 +31,7 @@ public class ComandoControladorUsuario {
 
     @PostMapping
     @ApiOperation("Crear Usuario")
-    public ComandoRespuesta<Long,Integer, String> crear(@RequestBody ComandoUsuario comandoUsuario) {
+    public ComandoRespuesta<Long> crear(@RequestBody ComandoUsuario comandoUsuario) {
         return manejadorCrearUsuario.ejecutar(comandoUsuario);
     }
 

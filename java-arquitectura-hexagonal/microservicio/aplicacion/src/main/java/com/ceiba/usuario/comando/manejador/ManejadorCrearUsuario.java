@@ -12,7 +12,7 @@ import com.ceiba.usuario.comando.ComandoUsuario;
 import com.ceiba.usuario.comando.fabrica.FabricaUsuario;
 
 @Component
-public class ManejadorCrearUsuario implements ManejadorComandoRespuesta<ComandoUsuario, ComandoRespuesta<Long, Integer, String >> {
+public class ManejadorCrearUsuario implements ManejadorComandoRespuesta<ComandoUsuario, ComandoRespuesta<Long>> {
 
     private final FabricaUsuario fabricaUsuario;
     private final ServicioCrearUsuario servicioCrearUsuario;
@@ -22,8 +22,8 @@ public class ManejadorCrearUsuario implements ManejadorComandoRespuesta<ComandoU
         this.servicioCrearUsuario = servicioCrearUsuario;
     }
 
-    public ComandoRespuesta<Long, Integer, String > ejecutar(ComandoUsuario comandoUsuario) {
+    public ComandoRespuesta<Long> ejecutar(ComandoUsuario comandoUsuario) {
         Usuario usuario = this.fabricaUsuario.crear(comandoUsuario);
-        return new ComandoRespuesta<>(this.servicioCrearUsuario.ejecutar(usuario), 0, "success");
+        return new ComandoRespuesta<>(this.servicioCrearUsuario.ejecutar(usuario));
     }
 }

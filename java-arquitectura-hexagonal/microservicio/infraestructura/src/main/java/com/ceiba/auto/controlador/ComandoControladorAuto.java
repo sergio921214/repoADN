@@ -30,7 +30,7 @@ public class ComandoControladorAuto {
 
     @PostMapping
     @ApiOperation("Crear Auto")
-    public ComandoRespuesta<Long ,Integer, String > crear(@RequestBody ComandoAuto comandoAuto) {
+    public ComandoRespuesta<Long> crear(@RequestBody ComandoAuto comandoAuto) {
         return manejadorCrearAuto.ejecutar(comandoAuto);
     }
 

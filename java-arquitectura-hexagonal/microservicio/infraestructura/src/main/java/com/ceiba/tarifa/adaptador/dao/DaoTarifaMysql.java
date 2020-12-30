@@ -2,7 +2,7 @@ package com.ceiba.tarifa.adaptador.dao;
 
 import java.util.List;
 
-import com.ceiba.auto.adaptador.dao.MapeoAuto;
+
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 
@@ -38,6 +38,7 @@ public class DaoTarifaMysql implements DaoTarifa {
 
 	@Override
 	public DtoTarifa obtenerTarifaPorTipoCombustible(String tipoCombustible) {
+		System.out.println("este es el tipo de combustible de obtener tarifa" + tipoCombustible);
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("tipoCombustible", tipoCombustible);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerTarifaPorTipoCombustible,paramSource, new MapeoTarifa());

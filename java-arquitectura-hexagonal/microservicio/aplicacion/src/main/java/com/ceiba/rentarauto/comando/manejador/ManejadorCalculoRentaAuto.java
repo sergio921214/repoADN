@@ -43,6 +43,7 @@ public class ManejadorCalculoRentaAuto implements ManejadorComandoRespuesta<Coma
     	
     	DtoAuto auto = this.daoAuto.obtenerAutoPorPlaca(comandoSolicitarRentaAuto.getPlaca());
     	
+    	System.out.println("este es el tipo de combustible"+auto.getTipoCombustible());
     	DtoTarifa tarifa = this.daoTarifa.obtenerTarifaPorTipoCombustible(auto.getTipoCombustible());
     	
     	BigDecimal porcentaje = tarifa.getPorcentaje();

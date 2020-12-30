@@ -13,22 +13,23 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping("/auto")
 @Api(tags = { "Controlador comando solicitar renta auto"})
-public class ComandoControladorSolicitarRentaAuto {
+public class ComandoControladorCalcularRentaAuto {
 
     private final ManejadorCalculoRentaAuto manejadorCalculoRentaAuto;
 	
 
 
     @Autowired
-    public ComandoControladorSolicitarRentaAuto(ManejadorCalculoRentaAuto manejadorCalculoRentaAuto) {
+    public ComandoControladorCalcularRentaAuto(ManejadorCalculoRentaAuto manejadorCalculoRentaAuto) {
         this.manejadorCalculoRentaAuto = manejadorCalculoRentaAuto;
 		
 		
     }
 
-    @PostMapping("/calculoRenta")
+    @GetMapping("/calculoRenta")
+    //@ResponseBody
     @ApiOperation("Calcular valor total de renta auto")
-    public ComandoRespuesta<Double> crear(@RequestBody ComandoCalculoRentaAuto comandoCalculoRentaAuto) {
+    public ComandoRespuesta<Double> crear(ComandoCalculoRentaAuto comandoCalculoRentaAuto) {
         return manejadorCalculoRentaAuto.ejecutar(comandoCalculoRentaAuto);
     }
 

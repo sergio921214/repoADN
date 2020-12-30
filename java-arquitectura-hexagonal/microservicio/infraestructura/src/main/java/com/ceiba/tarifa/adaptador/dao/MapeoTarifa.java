@@ -16,7 +16,7 @@ public class MapeoTarifa implements RowMapper<DtoTarifa>, MapperResult {
 
         Long id = resultSet.getLong("id");
         String tipoCombustible = resultSet.getString("tipoCombustible");
-        BigDecimal porcentaje = resultSet.getBigDecimal("multiplicadorFinSemana");
+        BigDecimal porcentaje = resultSet.getBigDecimal("porcentaje");
 
         return new DtoTarifa(id,tipoCombustible,porcentaje);
     }

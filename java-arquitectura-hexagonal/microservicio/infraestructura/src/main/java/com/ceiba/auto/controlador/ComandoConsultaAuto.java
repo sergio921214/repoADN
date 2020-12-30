@@ -31,19 +31,19 @@ public class ComandoConsultaAuto {
         this.manejadorListarAutosRentados = manejadorListarAutosRentados;
     }
 
-    @GetMapping("/listar")
+    @GetMapping("/autos")
     @ApiOperation("Listar Autos")
     public List<DtoAuto> listar() {
         return this.manejadorListarAutos.ejecutar();
     }
 
-    @GetMapping("/listarDisponibles")
+    @GetMapping("/autos-disponibles")
     @ApiOperation("Listar Autos Disponibles")
     public List<DtoAuto> listarDisponibles() {
         return this.manejadorListarAutosDisponibles.ejecutar();
     }
     
-    @GetMapping("/listarRentados")
+    @GetMapping("/autos-rentados")
     @ApiOperation("Listar Autos Rentados")
     public List<DtoAuto> listarRentados() {
         return this.manejadorListarAutosRentados.ejecutar();

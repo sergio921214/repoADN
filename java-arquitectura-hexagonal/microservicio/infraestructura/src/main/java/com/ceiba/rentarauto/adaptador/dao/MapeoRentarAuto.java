@@ -1,6 +1,6 @@
 package com.ceiba.rentarauto.adaptador.dao;
 
-import java.math.BigDecimal;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;

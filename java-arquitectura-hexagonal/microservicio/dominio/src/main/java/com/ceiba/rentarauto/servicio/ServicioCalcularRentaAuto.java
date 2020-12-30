@@ -72,7 +72,7 @@ public class ServicioCalcularRentaAuto {
 		Double precioPorDiaTarifaCombustible = porcentaje.doubleValue()*precioPorDia;
 		Double precioPorDiaFinSemana = precioPorDiaTarifaCombustible * multiplicadorFinSemana.doubleValue();
 		Integer diasFinSemana = contarDiasFinSemana(fechaRentaDate, fechaEntregaDate);
-		Integer diasDeSemana = contarDiasDeSemana(fechaRentaDate, fechaEntregaDate);;
+		Integer diasDeSemana = contarDiasDeSemana(fechaRentaDate, fechaEntregaDate);
 		Double precioTotalFinSemana = precioPorDiaFinSemana * diasFinSemana;
 		Double precioTotalDiasDeSemana = precioPorDiaTarifaCombustible * diasDeSemana;
 		 

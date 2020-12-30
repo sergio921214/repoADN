@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class RepositorioAutoMysql implements RepositorioAuto {
+	private static final String PLACA = "placa";
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
@@ -36,22 +37,23 @@ public class RepositorioAutoMysql implements RepositorioAuto {
     @Override
     public boolean existe(String placa) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("placa", placa);
+        paramSource.addValue(PLACA, placa);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste,paramSource, Boolean.class);
     }
 
     @Override
     public void rentar(String placa) {
-        this.customNamedParameterJdbcTemplate.actualizar(placa, sqlCambiarEstadoRentado);
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue(PLACA, placa);
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlCambiarEstadoRentado,paramSource);
     }
 
     @Override
     public boolean existeExcluyendoId(Long id, String placa) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-        paramSource.addValue("placa", placa);
-
+        paramSource.addValue(PLACA, placa);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId,paramSource, Boolean.class);
     }
 }

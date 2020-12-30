@@ -2,9 +2,9 @@ package com.ceiba.rentarauto.servicio;
 
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Calendar;
 
 import com.ceiba.auto.modelo.dto.DtoAuto;
@@ -15,23 +15,21 @@ public class ServicioCalcularRentaAuto {
 
 	
 	
-	public Double ejecutar (DtoAuto auto, BigDecimal porcentaje, LocalDate fechaRenta, LocalDate fechaEntrega) throws ExcepcionDomingo {
+	public Double ejecutar (DtoAuto auto, BigDecimal porcentaje, String fechaRenta, String fechaEntrega) throws ExcepcionDomingo, ParseException {
 		
 		
 		return calcularTotalRentaAuto(auto,porcentaje,fechaRenta,fechaEntrega);
 		
 	}
 	
-	private Integer contarDiasFinSemana(LocalDate fechaRenta, LocalDate fechaEntrega) {
-		ZoneId defaultZoneId = ZoneId.systemDefault();
-		Date fechaRentaDate = Date.from(fechaRenta.atStartOfDay(defaultZoneId).toInstant());
-		Date fechaEntregaDate = Date.from(fechaEntrega.atStartOfDay(defaultZoneId).toInstant());
+	private Integer contarDiasFinSemana(Date fechaRenta, Date fechaEntrega) {
+
 		
 		Calendar c1 = Calendar.getInstance();
-		c1.setTime(fechaRentaDate);
+		c1.setTime(fechaRenta);
 		 
 		Calendar c2 = Calendar.getInstance();
-		c2.setTime(fechaEntregaDate);
+		c2.setTime(fechaEntrega);
 		 
 		int diasFinSemana = 0;
 		 
@@ -44,17 +42,20 @@ public class ServicioCalcularRentaAuto {
 		return diasFinSemana;
 	}
 	
-	private Integer contarDiasDeSemana(LocalDate fechaRenta, LocalDate fechaEntrega) {
+	private Integer contarDiasDeSemana(Date fechaRenta, Date fechaEntrega) {
 		
-		ZoneId defaultZoneId = ZoneId.systemDefault();
-		Date fechaRentaDate = Date.from(fechaRenta.atStartOfDay(defaultZoneId).toInstant());
-		Date fechaEntregaDate = Date.from(fechaEntrega.atStartOfDay(defaultZoneId).toInstant());
-		
+		/*
+		 * ZoneId defaultZoneId = ZoneId.systemDefault(); Date fechaRentaDate =
+		 * Date.from(fechaRenta.atStartOfDay(defaultZoneId).toInstant()); Date
+		 * fechaEntregaDate =
+		 * Date.from(fechaEntrega.atStartOfDay(defaultZoneId).toInstant());
+		 */
+
 		Calendar c1 = Calendar.getInstance();
-		c1.setTime(fechaRentaDate);
+		c1.setTime(fechaRenta);
 		 
 		Calendar c2 = Calendar.getInstance();
-		c2.setTime(fechaEntregaDate);
+		c2.setTime(fechaEntrega);
 		 
 		int diasFinSemana = 0;
 		 
@@ -67,14 +68,18 @@ public class ServicioCalcularRentaAuto {
 		return diasFinSemana;
 	}
 	
-	private Double calcularTotalRentaAuto(DtoAuto auto, BigDecimal porcentaje, LocalDate fechaRenta, LocalDate fechaEntrega  ) {
+	private Double calcularTotalRentaAuto(DtoAuto auto, BigDecimal porcentaje, String fechaRenta, String fechaEntrega  ) throws ParseException {
 		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
+		
+		Date fechaRentaDate = formatter.parse(fechaRenta);
+		Date fechaEntregaDate = formatter.parse(fechaEntrega);
 		Double precioPorDia = auto.getPrecioPorDia();
 		BigDecimal multiplicadorFinSemana = auto.getMultiplicadorFinSemana();
 		Double precioPorDiaTarifaCombustible = porcentaje.doubleValue()*precioPorDia;
 		Double precioPorDiaFinSemana = precioPorDiaTarifaCombustible * multiplicadorFinSemana.doubleValue();
-		Integer diasFinSemana = contarDiasFinSemana(fechaRenta, fechaEntrega);
-		Integer diasDeSemana = contarDiasDeSemana(fechaRenta, fechaEntrega);
+		Integer diasFinSemana = contarDiasFinSemana(fechaRentaDate, fechaEntregaDate);
+		Integer diasDeSemana = contarDiasDeSemana(fechaRentaDate, fechaRentaDate);
 		Double precioTotalFinSemana = precioPorDiaFinSemana * diasFinSemana;
 		Double precioTotalDiasDeSemana = precioPorDiaTarifaCombustible * diasDeSemana;
 		 

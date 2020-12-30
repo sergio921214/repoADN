@@ -24,7 +24,7 @@ public class ManejadorCrearRentarAuto implements ManejadorComandoRespuesta<Coman
 
     public ComandoRespuesta<Long> ejecutar(ComandoRentarAuto comandoRentarAuto) {
     	RentarAuto rentarAuto = this.fabricaRentarAuto.crear(comandoRentarAuto);
-    	System.out.println("esta es la entidad rentar auto " + rentarAuto.getPlaca());
+    	
         return new ComandoRespuesta<>(this.servicioGuardarRentaAuto.ejecutar(rentarAuto));
     }
 }

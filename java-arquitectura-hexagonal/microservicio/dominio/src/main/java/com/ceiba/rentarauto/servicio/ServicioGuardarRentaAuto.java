@@ -12,19 +12,22 @@ public class ServicioGuardarRentaAuto {
 
     private final RepositorioRentarAuto repositorioRentarAuto;
     private final RepositorioAuto repositorioAuto;
+    
 
     public ServicioGuardarRentaAuto(RepositorioRentarAuto repositorioRentarAuto,
-    									RepositorioAuto repositorioAuto) {
+    									RepositorioAuto repositorioAuto
+    									) {
     	
         this.repositorioRentarAuto = repositorioRentarAuto;
         this.repositorioAuto = repositorioAuto;
+        
     }
 
     public Long ejecutar(RentarAuto rentarAuto) {
-        //validarExistenciaPrevia(rentarAuto);
+        validarExistenciaPrevia(rentarAuto);
+        
     	System.out.println("va bien" + rentarAuto.getPlaca());
         this.repositorioAuto.rentar(rentarAuto.getPlaca());
-    	
         return this.repositorioRentarAuto.guardarRenta(rentarAuto);
     }
     

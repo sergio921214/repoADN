@@ -26,12 +26,22 @@ public class ComandoControladorCalcularRentaAuto {
 		
     }
 
-    @PostMapping("/calculoRenta")
-    @ApiOperation("Calcular valor total de renta auto")
-    public ComandoRespuesta<Double> crear(@RequestBody ComandoCalculoRentaAuto comandoCalculoRentaAuto) {
-        return manejadorCalculoRentaAuto.ejecutar(comandoCalculoRentaAuto);
-    }
+	
+	/*
+	 * @PostMapping("/calculoRenta")
+	 * 
+	 * @ApiOperation("Calcular valor total de renta auto") public
+	 * ComandoRespuesta<Double> crear(@RequestBody ComandoCalculoRentaAuto
+	 * comandoCalculoRentaAuto) { return
+	 * manejadorCalculoRentaAuto.ejecutar(comandoCalculoRentaAuto); }
+	 */
 
-
+	
+	  @GetMapping("/calculototalrenta/{placa}/{fecharenta}/{fechaentrega}")
+	  
+	  @ApiOperation("Calcular valor total de renta auto") public
+	  ComandoRespuesta<Double> crear(@PathVariable("placa") String placa, @PathVariable("fecharenta") String fechaRenta, @PathVariable("fecharenta") String fechaEntrega ) { return
+	  manejadorCalculoRentaAuto.ejecutar(placa, fechaRenta, fechaEntrega); }
+	 
 
 }

@@ -40,8 +40,10 @@ public class ComandoControladorCalcularRentaAuto {
 	  @GetMapping("/calculototalrenta/{placa}/{fecharenta}/{fechaentrega}")
 	  
 	  @ApiOperation("Calcular valor total de renta auto") public
-	  ComandoRespuesta<Double> crear(@PathVariable("placa") String placa, @PathVariable("fecharenta") String fechaRenta, @PathVariable("fecharenta") String fechaEntrega ) { return
-	  manejadorCalculoRentaAuto.ejecutar(placa, fechaRenta, fechaEntrega); }
+	  ComandoRespuesta<Double> crear(@PathVariable("placa") String placa, @PathVariable("fecharenta") String fechaRenta, @PathVariable("fechaentrega") String fechaEntrega ) { 
+		  ComandoCalculoRentaAuto comandoCalculoRentaAuto = new ComandoCalculoRentaAuto(placa,fechaRenta,fechaEntrega);
+		  ;
+		  return this.manejadorCalculoRentaAuto.ejecutar(comandoCalculoRentaAuto); }
 	 
 
 }

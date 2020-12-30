@@ -1,6 +1,6 @@
 package com.ceiba.rentarauto.comando;
 
-import java.time.LocalDate;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +14,7 @@ import lombok.Setter;
 public class ComandoCalculoRentaAuto{
 
     private String placa;
-    private LocalDate fechaRenta;
-    private LocalDate fechaEntrega;
+    private String fechaRenta;
+    private String fechaEntrega;
     
 }

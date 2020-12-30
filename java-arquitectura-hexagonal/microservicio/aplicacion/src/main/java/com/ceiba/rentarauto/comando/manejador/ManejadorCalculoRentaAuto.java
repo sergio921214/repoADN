@@ -8,15 +8,12 @@ import com.ceiba.rentarauto.comando.ComandoCalculoRentaAuto;
 import com.ceiba.rentarauto.servicio.ServicioCalcularRentaAuto;
 
 import java.math.BigDecimal;
-import java.text.ParseException;
-import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
 
 import com.ceiba.ComandoRespuesta;
 
 import com.ceiba.auto.puerto.dao.DaoAuto;
-import com.ceiba.dominio.excepcion.ExcepcionDomingo;
 import com.ceiba.tarifa.puerto.dao.DaoTarifa;
 import com.ceiba.tarifa.modelo.dto.DtoTarifa;
 import com.ceiba.auto.modelo.dto.DtoAuto;
@@ -41,13 +38,13 @@ public class ManejadorCalculoRentaAuto implements ManejadorComandoRespuesta<Coma
     }
 
     
-    public ComandoRespuesta<Double> ejecutar(String placa, String fechaRenta, String fechaEntrega) throws RuntimeException, ParseException {
+    public ComandoRespuesta<Double> ejecutar(ComandoCalculoRentaAuto comandoCalculoRentaAuto)  {
     	
-    	DtoAuto auto = this.daoAuto.obtenerAutoPorPlaca(placa);
+    	DtoAuto auto = this.daoAuto.obtenerAutoPorPlaca(comandoCalculoRentaAuto.getPlaca());
     	DtoTarifa tarifa = this.daoTarifa.obtenerTarifaPorTipoCombustible(auto.getTipoCombustible());    	
     	BigDecimal porcentaje = tarifa.getPorcentaje();    	
     	    	
-    	return new ComandoRespuesta<>(this.servicioCalcularRentaAuto.ejecutar(auto, porcentaje, fechaRenta, fechaEntrega)); 
+    	return new ComandoRespuesta<>(this.servicioCalcularRentaAuto.ejecutar(auto, porcentaje, comandoCalculoRentaAuto.getFechaRenta(), comandoCalculoRentaAuto.getFechaEntrega())); 
      
     }
 

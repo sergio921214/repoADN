@@ -6,6 +6,7 @@ import com.ceiba.usuario.servicio.ServicioActualizarUsuario;
 import com.ceiba.usuario.servicio.ServicioCrearUsuario;
 import com.ceiba.usuario.servicio.ServicioEliminarUsuario;
 import com.ceiba.auto.servicio.ServicioCrearAuto;
+import com.ceiba.rentarauto.servicio.ServicioGuardarRentaAuto;
 import com.ceiba.rentarauto.puerto.repositorio.RepositorioRentarAuto;
 import com.ceiba.rentarauto.servicio.ServicioCalcularRentaAuto;
 import com.ceiba.auto.servicio.ServicioCambiarRentadoAuto; 
@@ -43,6 +44,11 @@ public class BeanServicio {
     @Bean
     public ServicioCalcularRentaAuto servicioSolicitarRentarAuto() {
         return new ServicioCalcularRentaAuto();
+    }
+    
+    @Bean
+    public ServicioGuardarRentaAuto servicioGuardarRentaAuto(RepositorioRentarAuto repositorioRentarAuto, RepositorioAuto repositorioAuto) {
+        return new ServicioGuardarRentaAuto(repositorioRentarAuto, repositorioAuto);
     }
 	
 

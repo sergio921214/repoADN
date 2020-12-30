@@ -26,10 +26,9 @@ public class ComandoControladorCalcularRentaAuto {
 		
     }
 
-    @GetMapping("/calculoRenta")
-    //@ResponseBody
+    @PostMapping("/calculoRenta")
     @ApiOperation("Calcular valor total de renta auto")
-    public ComandoRespuesta<Double> crear(ComandoCalculoRentaAuto comandoCalculoRentaAuto) {
+    public ComandoRespuesta<Double> crear(@RequestBody ComandoCalculoRentaAuto comandoCalculoRentaAuto) {
         return manejadorCalculoRentaAuto.ejecutar(comandoCalculoRentaAuto);
     }
 

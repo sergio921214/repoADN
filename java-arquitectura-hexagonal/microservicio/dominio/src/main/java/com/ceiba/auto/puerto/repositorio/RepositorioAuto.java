@@ -14,7 +14,7 @@ public interface RepositorioAuto {
      * Permite rentar un auto
      * @param auto
      */
-    void rentar(Auto auto);
+    void rentar(String placa);
 
     /**
      * Permite validar si existe un auto con una placa

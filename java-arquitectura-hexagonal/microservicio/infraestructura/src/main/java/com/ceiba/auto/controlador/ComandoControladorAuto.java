@@ -37,8 +37,8 @@ public class ComandoControladorAuto {
 
 	@PutMapping(value="/{placa}")
 	@ApiOperation("rentar auto")
-	public void actualizar(@RequestBody ComandoAuto comandoAuto,@PathVariable String placa) {
-		comandoAuto.setPlaca(placa);
-		manejadorRentarAuto.ejecutar(comandoAuto);
+	public void actualizar(@PathVariable String placa) {
+		
+		manejadorRentarAuto.ejecutar(placa);
 	}
 }

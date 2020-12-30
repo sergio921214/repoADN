@@ -15,8 +15,8 @@ public class RepositorioAutoMysql implements RepositorioAuto {
     @SqlStatement(namespace="auto", value="crear")
     private static String sqlCrear;
 
-    @SqlStatement(namespace="auto", value="rentar")
-    private static String sqlRentar;
+    @SqlStatement(namespace="auto", value="cambiarEstadoRentado")
+    private static String sqlCambiarEstadoRentado;
 
     @SqlStatement(namespace="auto", value="existe")
     private static String sqlExiste;
@@ -42,8 +42,8 @@ public class RepositorioAutoMysql implements RepositorioAuto {
     }
 
     @Override
-    public void rentar(Auto auto) {
-        this.customNamedParameterJdbcTemplate.actualizar(auto, sqlRentar);
+    public void rentar(String placa) {
+        this.customNamedParameterJdbcTemplate.actualizar(placa, sqlCambiarEstadoRentado);
     }
 
     @Override

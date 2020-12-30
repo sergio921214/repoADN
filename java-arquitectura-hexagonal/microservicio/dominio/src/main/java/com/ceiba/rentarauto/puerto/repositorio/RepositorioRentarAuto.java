@@ -11,5 +11,12 @@ public interface RepositorioRentarAuto {
      * @param RentarAuto
      */
     Long guardarRenta(RentarAuto rentarAuto);
+    
+    /**
+     * Permite validar si existe una renta de auto con una placa
+     * @param placa
+     * @return si existe o no la renta
+     */
+    boolean existe(String placa);
 
 }

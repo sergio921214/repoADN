@@ -1,0 +1,1 @@
+insert into rentarauto(placa, fechaRenta,fechaEntrega,precioTotalRenta) values (:placa, :fechaRenta, :fechaEntrega, :precioTotalRenta)

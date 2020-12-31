@@ -1,6 +1,5 @@
 package com.ceiba.auto.modelo.dto;
 
-import java.math.BigDecimal;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,5 +13,5 @@ public class DtoAuto {
 	private String tipoCombustible;
 	private Boolean rentado;
 	private Double precioPorDia;
-	private BigDecimal multiplicadorFinSemana;
+	private Double multiplicadorFinSemana;
 }

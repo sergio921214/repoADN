@@ -6,19 +6,17 @@ import java.util.Date;
 import java.text.ParseException;
 
 public class UtilidadesFecha {
-	
-	  private UtilidadesFecha() {
-		    
-		  }
 
+	private UtilidadesFecha() {
 
-	  public static Date convertirStringADate(String fecha, String formato) {
-		    try {
-		      return new SimpleDateFormat(formato).parse(fecha);
-		    } catch (ParseException e) {
-		      return null;
-		    }
-	  }
+	}
 
+	public static Date convertirStringADate(String fecha, String formato) {
+		try {
+			return new SimpleDateFormat(formato).parse(fecha);
+		} catch (ParseException e) {
+			return null;
+		}
+	}
 
 }

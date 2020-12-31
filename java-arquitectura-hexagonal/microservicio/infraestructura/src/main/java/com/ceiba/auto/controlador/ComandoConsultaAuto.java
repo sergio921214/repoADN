@@ -15,7 +15,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/auto")
+@RequestMapping("/autos")
 @Api(tags={"Controlador consulta auto"})
 public class ComandoConsultaAuto {
 
@@ -31,19 +31,19 @@ public class ComandoConsultaAuto {
         this.manejadorListarAutosRentados = manejadorListarAutosRentados;
     }
 
-    @GetMapping("/autos")
+    @GetMapping()
     @ApiOperation("Listar Autos")
     public List<DtoAuto> listar() {
         return this.manejadorListarAutos.ejecutar();
     }
 
-    @GetMapping("/autos-disponibles")
+    @GetMapping("/disponibles")
     @ApiOperation("Listar Autos Disponibles")
     public List<DtoAuto> listarDisponibles() {
         return this.manejadorListarAutosDisponibles.ejecutar();
     }
     
-    @GetMapping("/autos-rentados")
+    @GetMapping("/rentados")
     @ApiOperation("Listar Autos Rentados")
     public List<DtoAuto> listarRentados() {
         return this.manejadorListarAutosRentados.ejecutar();

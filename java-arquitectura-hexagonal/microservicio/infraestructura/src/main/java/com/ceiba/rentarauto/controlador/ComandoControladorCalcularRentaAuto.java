@@ -12,30 +12,25 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/rentauto")
-@Api(tags = { "Controlador comando solicitar renta auto"})
+@Api(tags = { "Controlador comando solicitar renta auto" })
 public class ComandoControladorCalcularRentaAuto {
 
-    private final ManejadorCalculoRentaAuto manejadorCalculoRentaAuto;
-	
+	private final ManejadorCalculoRentaAuto manejadorCalculoRentaAuto;
 
+	@Autowired
+	public ComandoControladorCalcularRentaAuto(ManejadorCalculoRentaAuto manejadorCalculoRentaAuto) {
+		this.manejadorCalculoRentaAuto = manejadorCalculoRentaAuto;
 
-    @Autowired
-    public ComandoControladorCalcularRentaAuto(ManejadorCalculoRentaAuto manejadorCalculoRentaAuto) {
-        this.manejadorCalculoRentaAuto = manejadorCalculoRentaAuto;
-		
-		
-    }
+	}
 
+	@GetMapping("/totalrenta/{placa}/{fecharenta}/{fechaentrega}")
 
+	@ApiOperation("Calcular valor total de renta auto")
+	public ComandoRespuesta<Double> crear(@PathVariable("placa") String placa,
+			@PathVariable("fecharenta") String fechaRenta, @PathVariable("fechaentrega") String fechaEntrega) {
+		ComandoCalculoRentaAuto comandoCalculoRentaAuto = new ComandoCalculoRentaAuto(placa, fechaRenta, fechaEntrega);
 
-	
-	  @GetMapping("/totalrenta/{placa}/{fecharenta}/{fechaentrega}")
-	  
-	  @ApiOperation("Calcular valor total de renta auto") public
-	  ComandoRespuesta<Double> crear(@PathVariable("placa") String placa, @PathVariable("fecharenta") String fechaRenta, @PathVariable("fechaentrega") String fechaEntrega ) { 
-		  ComandoCalculoRentaAuto comandoCalculoRentaAuto = new ComandoCalculoRentaAuto(placa,fechaRenta,fechaEntrega);
-		  ;
-		  return this.manejadorCalculoRentaAuto.ejecutar(comandoCalculoRentaAuto); }
-	 
+		return this.manejadorCalculoRentaAuto.ejecutar(comandoCalculoRentaAuto);
+	}
 
 }

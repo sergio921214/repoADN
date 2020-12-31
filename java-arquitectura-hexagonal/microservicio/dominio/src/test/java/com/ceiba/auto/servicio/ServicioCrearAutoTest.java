@@ -28,6 +28,12 @@ public class ServicioCrearAutoTest {
     }
     
     @Test
+    public void validarPlacaIsNull() {
+    	AutoTestDataBuilder autoTestDataBuilder = new AutoTestDataBuilder().conPlaca(null);
+    	BasePrueba.assertThrows(() -> autoTestDataBuilder.build(), ExcepcionValorObligatorio.class, "Se debe ingresar la placa del Auto");
+    }
+    
+    @Test
     public void validarCombustibleIsNull() {
     	AutoTestDataBuilder autoTestDataBuilder = new AutoTestDataBuilder().conTipoCombustible(null);
     	BasePrueba.assertThrows(() -> autoTestDataBuilder.build(), ExcepcionValorObligatorio.class, "Se debe ingresar el tipo de combustible");

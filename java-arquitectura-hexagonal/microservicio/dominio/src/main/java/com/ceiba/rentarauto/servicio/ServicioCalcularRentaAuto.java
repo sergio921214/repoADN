@@ -1,28 +1,26 @@
 package com.ceiba.rentarauto.servicio;
 
-import java.math.BigDecimal;
-
 import java.util.Date;
 
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.dominio.utilidades.UtilidadesFecha;
 
 import com.ceiba.auto.modelo.dto.DtoAuto;
-import com.ceiba.auto.modelo.entidad.Auto;
+
 import com.ceiba.auto.puerto.repositorio.RepositorioAuto;
 
 public class ServicioCalcularRentaAuto {
-	
+
 	private final RepositorioAuto repositorioAuto;
-	
+
 	private static final String EL_AUTO_NO_EXISTE_EN_EL_SISTEMA = "El auto NO existe en el sistema";
-	
-    public ServicioCalcularRentaAuto(RepositorioAuto repositorioAuto) {
-        this.repositorioAuto = repositorioAuto;
-    }
+
+	public ServicioCalcularRentaAuto(RepositorioAuto repositorioAuto) {
+		this.repositorioAuto = repositorioAuto;
+	}
 
 	public Double ejecutar(DtoAuto auto, Double porcentaje, String fechaRenta, String fechaEntrega) {
-		
+
 		validarExistenciaPrevia(auto.getPlaca());
 		Date fechaRentaDate = UtilidadesFecha.convertirStringADate(fechaRenta, "yyyy-MM-dd");
 		Date fechaEntregaDate = UtilidadesFecha.convertirStringADate(fechaEntrega, "yyyy-MM-dd");
@@ -36,12 +34,12 @@ public class ServicioCalcularRentaAuto {
 		return precioTotalDiasDeSemana + precioTotalFinSemana;
 
 	}
-	
-    private void validarExistenciaPrevia(String placa) {
-        boolean existe = this.repositorioAuto.existe(placa);
-        if(!existe) {
-            throw new ExcepcionDuplicidad(EL_AUTO_NO_EXISTE_EN_EL_SISTEMA);
-        }
-    }
+
+	private void validarExistenciaPrevia(String placa) {
+		boolean existe = this.repositorioAuto.existe(placa);
+		if (!existe) {
+			throw new ExcepcionDuplicidad(EL_AUTO_NO_EXISTE_EN_EL_SISTEMA);
+		}
+	}
 
 }

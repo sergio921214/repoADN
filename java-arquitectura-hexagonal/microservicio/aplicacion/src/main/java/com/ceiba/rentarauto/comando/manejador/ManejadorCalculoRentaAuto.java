@@ -5,8 +5,6 @@ import com.ceiba.rentarauto.comando.ComandoCalculoRentaAuto;
 
 import com.ceiba.rentarauto.servicio.ServicioCalcularRentaAuto;
 
-import java.math.BigDecimal;
-
 import org.springframework.stereotype.Component;
 
 import com.ceiba.ComandoRespuesta;

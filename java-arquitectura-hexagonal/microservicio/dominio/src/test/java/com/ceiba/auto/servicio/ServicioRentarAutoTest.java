@@ -9,7 +9,7 @@ import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 
 public class ServicioRentarAutoTest {
 	@Test
-	public void validarAutoExistenciaPreviaTest() {
+	public void validarNoExistenciaPreviaAutoTest() {
 		// arrange
 
 		RepositorioAuto repositorioAuto = Mockito.mock(RepositorioAuto.class);
@@ -19,4 +19,5 @@ public class ServicioRentarAutoTest {
 		BasePrueba.assertThrows(() -> servicioRentarAuto.ejecutar(Mockito.anyString()), ExcepcionValorInvalido.class,
 				"El auto NO existe en el sistema");
 	}
+
 }

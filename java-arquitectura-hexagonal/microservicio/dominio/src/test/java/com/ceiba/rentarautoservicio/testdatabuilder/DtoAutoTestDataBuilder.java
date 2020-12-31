@@ -13,11 +13,11 @@ public class DtoAutoTestDataBuilder {
 
 	public DtoAutoTestDataBuilder() {
 		id = 1L;
-		placa = "ABC123";
-		tipoCombustible = "GAS";
+		placa = "ABC321";
+		tipoCombustible = "ELECTRICO";
 		rentado = false;
-		precioPorDia = 25000.0;
-		multiplicadorFinSemana = 2.0;
+		precioPorDia = 50000.0;
+		multiplicadorFinSemana = 3.0;
 
 	}
 

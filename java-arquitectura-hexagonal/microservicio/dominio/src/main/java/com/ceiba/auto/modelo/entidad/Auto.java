@@ -11,6 +11,8 @@ public class Auto {
 
 	private static final String SE_DEBE_INGRESAR_LA_PLACA = "Se debe ingresar la placa del Auto";
 	private static final String SE_DEBE_INGRESAR_EL_TIPO_COMBUSTIBLE = "Se debe ingresar el tipo de combustible";
+	private static final String SE_DEBE_INGRESAR_EL_PRECIO_POR_DIA = "Se debe ingresar el precio por dia";
+	private static final String SE_DEBE_INGRESAR_EL_MULTIPLICADOR_FIN_SEMANA = "Se debe ingresar el multiplicador fin semana";
 	private static final String LA_PLACA_DEBE_TENER_UNA_LONGITUD_IGUAL_A = "La placa debe tener una longitud igual a %s";
 	private static final String LA_PLACA_DEBE_TENER_TRES_DIGITOS = "La placa debe tener %s digitos";
 
@@ -28,6 +30,8 @@ public class Auto {
 
 		validarObligatorio(placa, SE_DEBE_INGRESAR_LA_PLACA);
 		validarObligatorio(tipoCombustible, SE_DEBE_INGRESAR_EL_TIPO_COMBUSTIBLE);
+		validarObligatorio(precioPorDia, SE_DEBE_INGRESAR_EL_PRECIO_POR_DIA);
+		validarObligatorio(multiplicadorFinSemana, SE_DEBE_INGRESAR_EL_MULTIPLICADOR_FIN_SEMANA);
 		validarLongitudIgual(placa, LONGITUD_PLACA, String.format(LA_PLACA_DEBE_TENER_UNA_LONGITUD_IGUAL_A,LONGITUD_PLACA));
 		validarCantidadDigitosCadena(placa, CANTIDAD_DIGITOS_PLACA, String.format(LA_PLACA_DEBE_TENER_TRES_DIGITOS,CANTIDAD_DIGITOS_PLACA));
 		

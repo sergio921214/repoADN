@@ -23,7 +23,22 @@ public class AutoTestDataBuilder {
 		this.placa = placa;
 		return this;
 	}
+	
+	public AutoTestDataBuilder conTipoCombustible(String tipoCombustible) {
+		this.tipoCombustible = tipoCombustible;
+		return this;
+	}
+	
+	public AutoTestDataBuilder conPrecioPordia(Double precioPorDia) {
+		this.precioPorDia = precioPorDia;
+		return this;
+	}
 
+	public AutoTestDataBuilder conMultiplicadorFinSemana(Double multiplicadorFinSemana) {
+		this.multiplicadorFinSemana = multiplicadorFinSemana;
+		return this;
+	}
+	
 	public Auto build() {
 		return new Auto(placa, tipoCombustible, rentado, precioPorDia, multiplicadorFinSemana);
 	}

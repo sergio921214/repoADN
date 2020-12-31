@@ -4,6 +4,7 @@ import com.ceiba.auto.modelo.entidad.Auto;
 import com.ceiba.auto.puerto.repositorio.RepositorioAuto;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
+import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.auto.servicio.testdatabuilder.AutoTestDataBuilder;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -24,6 +25,24 @@ public class ServicioCrearAutoTest {
     public void validarDigitosPlacaIgual3() {
     	AutoTestDataBuilder autoTestDataBuilder = new AutoTestDataBuilder().conPlaca("ABCDEF");
     	BasePrueba.assertThrows(() -> autoTestDataBuilder.build(), ExcepcionLongitudValor.class, "La placa debe tener 3 digitos");
+    }
+    
+    @Test
+    public void validarCombustibleIsNull() {
+    	AutoTestDataBuilder autoTestDataBuilder = new AutoTestDataBuilder().conTipoCombustible(null);
+    	BasePrueba.assertThrows(() -> autoTestDataBuilder.build(), ExcepcionValorObligatorio.class, "Se debe ingresar el tipo de combustible");
+    }
+    
+    @Test
+    public void validarPrecioPorDiaIsNull() {
+    	AutoTestDataBuilder autoTestDataBuilder = new AutoTestDataBuilder().conPrecioPordia(null);
+    	BasePrueba.assertThrows(() -> autoTestDataBuilder.build(), ExcepcionValorObligatorio.class, "Se debe ingresar el precio por dia");
+    }
+    
+    @Test
+    public void validarMultiplicadorFinSemanaIsNull() {
+    	AutoTestDataBuilder autoTestDataBuilder = new AutoTestDataBuilder().conMultiplicadorFinSemana(null);
+    	BasePrueba.assertThrows(() -> autoTestDataBuilder.build(), ExcepcionValorObligatorio.class, "Se debe ingresar el multiplicador fin semana");
     }
 
     @Test

@@ -15,9 +15,15 @@ public class ServicioCrearAutoTest {
     @Test
     public void validarPlacaLongitudIgual6() {
         // arrange
-        AutoTestDataBuilder autoTestDataBuilder = new AutoTestDataBuilder().conPlaca("BC124");
+        AutoTestDataBuilder autoTestDataBuilder = new AutoTestDataBuilder().conPlaca("ADBC124");
         // act - assert
         BasePrueba.assertThrows(() -> autoTestDataBuilder.build(), ExcepcionLongitudValor.class, "La placa debe tener una longitud igual a 6");
+    }
+    
+    @Test 
+    public void validarDigitosPlacaIgual3() {
+    	AutoTestDataBuilder autoTestDataBuilder = new AutoTestDataBuilder().conPlaca("ABCDEF");
+    	BasePrueba.assertThrows(() -> autoTestDataBuilder.build(), ExcepcionLongitudValor.class, "La placa debe tener 3 digitos");
     }
 
     @Test

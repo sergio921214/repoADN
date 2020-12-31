@@ -12,7 +12,7 @@ public class Auto {
 	private static final String SE_DEBE_INGRESAR_LA_PLACA = "Se debe ingresar la placa del Auto";
 	private static final String SE_DEBE_INGRESAR_EL_TIPO_COMBUSTIBLE = "Se debe ingresar el tipo de combustible";
 	private static final String LA_PLACA_DEBE_TENER_UNA_LONGITUD_IGUAL_A = "La placa debe tener una longitud igual a %s";
-	private static final String LA_PLACA_DEBE_TENER_TRES_DIGITOS = "La placa debe tener tres digitos";
+	private static final String LA_PLACA_DEBE_TENER_TRES_DIGITOS = "La placa debe tener %s digitos";
 
 	private static final int LONGITUD_PLACA = 6;
 	private static final int CANTIDAD_DIGITOS_PLACA = 3;

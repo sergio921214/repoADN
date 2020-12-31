@@ -12,5 +12,5 @@ import java.math.BigDecimal;
 public class DtoTarifa {
     private Long id;
 	private String tipoCombustible;
-	private BigDecimal porcentaje;
+	private Double porcentaje;
 }

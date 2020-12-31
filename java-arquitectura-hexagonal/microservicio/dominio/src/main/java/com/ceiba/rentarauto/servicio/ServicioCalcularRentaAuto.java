@@ -3,71 +3,45 @@ package com.ceiba.rentarauto.servicio;
 import java.math.BigDecimal;
 
 import java.util.Date;
-import java.util.Calendar;
+
+import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.dominio.utilidades.UtilidadesFecha;
 
 import com.ceiba.auto.modelo.dto.DtoAuto;
+import com.ceiba.auto.modelo.entidad.Auto;
+import com.ceiba.auto.puerto.repositorio.RepositorioAuto;
 
 public class ServicioCalcularRentaAuto {
+	
+	private final RepositorioAuto repositorioAuto;
+	
+	private static final String EL_AUTO_NO_EXISTE_EN_EL_SISTEMA = "El auto NO existe en el sistema";
+	
+    public ServicioCalcularRentaAuto(RepositorioAuto repositorioAuto) {
+        this.repositorioAuto = repositorioAuto;
+    }
 
-	public Double ejecutar(DtoAuto auto, BigDecimal porcentaje, String fechaRenta, String fechaEntrega) {
-
-		return calcularTotalRentaAuto(auto, porcentaje, fechaRenta, fechaEntrega);
-
-	}
-
-	private Integer contarDiasFinSemana(Date fechaRenta, Date fechaEntrega) {
-
-		Calendar c1 = Calendar.getInstance();
-		c1.setTime(fechaRenta);
-
-		Calendar c2 = Calendar.getInstance();
-		c2.setTime(fechaEntrega);
-
-		int diasFinSemana = 0;
-
-		while (c2.after(c1)) {
-			if (c1.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY || c1.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY)
-				diasFinSemana++;
-			c1.add(Calendar.DATE, 1);
-		}
-
-		return diasFinSemana;
-	}
-
-	private Integer contarDiasDeSemana(Date fechaRenta, Date fechaEntrega) {
-
-		Calendar c1 = Calendar.getInstance();
-		c1.setTime(fechaRenta);
-
-		Calendar c2 = Calendar.getInstance();
-		c2.setTime(fechaEntrega);
-
-		int diasSemana = 0;
-
-		while (c2.after(c1)) {
-			if (c1.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && c1.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY)
-				diasSemana++;
-			c1.add(Calendar.DATE, 1);
-		}
-
-		return diasSemana;
-	}
-
-	private Double calcularTotalRentaAuto(DtoAuto auto, BigDecimal porcentaje, String fechaRenta, String fechaEntrega) {
-
+	public Double ejecutar(DtoAuto auto, Double porcentaje, String fechaRenta, String fechaEntrega) {
+		
+		validarExistenciaPrevia(auto.getPlaca());
 		Date fechaRentaDate = UtilidadesFecha.convertirStringADate(fechaRenta, "yyyy-MM-dd");
 		Date fechaEntregaDate = UtilidadesFecha.convertirStringADate(fechaEntrega, "yyyy-MM-dd");
-		Double precioPorDia = auto.getPrecioPorDia();
-		Double multiplicadorFinSemana = auto.getMultiplicadorFinSemana();
-		Double precioPorDiaTarifaCombustible = porcentaje.doubleValue() * precioPorDia;
-		Double precioPorDiaFinSemana = precioPorDiaTarifaCombustible * multiplicadorFinSemana.doubleValue();
-		Integer diasFinSemana = contarDiasFinSemana(fechaRentaDate, fechaEntregaDate);
-		Integer diasDeSemana = contarDiasDeSemana(fechaRentaDate, fechaEntregaDate);
+		Double precioPorDiaTarifaCombustible = porcentaje * auto.getPrecioPorDia();
+		Double precioPorDiaFinSemana = precioPorDiaTarifaCombustible * auto.getMultiplicadorFinSemana();
+		Integer diasFinSemana = UtilidadesFecha.contarDiasFinSemana(fechaRentaDate, fechaEntregaDate);
+		Integer diasDeSemana = UtilidadesFecha.contarDiasDeSemana(fechaRentaDate, fechaEntregaDate);
 		Double precioTotalFinSemana = precioPorDiaFinSemana * diasFinSemana;
 		Double precioTotalDiasDeSemana = precioPorDiaTarifaCombustible * diasDeSemana;
 
 		return precioTotalDiasDeSemana + precioTotalFinSemana;
 
 	}
+	
+    private void validarExistenciaPrevia(String placa) {
+        boolean existe = this.repositorioAuto.existe(placa);
+        if(!existe) {
+            throw new ExcepcionDuplicidad(EL_AUTO_NO_EXISTE_EN_EL_SISTEMA);
+        }
+    }
+
 }

@@ -9,47 +9,47 @@ import com.ceiba.auto.servicio.ServicioCrearAuto;
 import com.ceiba.rentarauto.servicio.ServicioGuardarRentaAuto;
 import com.ceiba.rentarauto.puerto.repositorio.RepositorioRentarAuto;
 import com.ceiba.rentarauto.servicio.ServicioCalcularRentaAuto;
-import com.ceiba.auto.servicio.ServicioCambiarRentadoAuto; 
+import com.ceiba.auto.servicio.ServicioCambiarRentadoAuto;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class BeanServicio {
 
-    @Bean
-    public ServicioCrearAuto servicioCrearAuto(RepositorioAuto repositorioAuto) {
-        return new ServicioCrearAuto(repositorioAuto);
-    }
-	
-    @Bean
-    public ServicioCambiarRentadoAuto servicioRentarAuto(RepositorioAuto repositorioAuto) {
-        return new ServicioCambiarRentadoAuto(repositorioAuto);
-    }
-	
-    @Bean
-    public ServicioCrearUsuario servicioCrearUsuario(RepositorioUsuario repositorioUsuario) {
-        return new ServicioCrearUsuario(repositorioUsuario);
-    }
+	@Bean
+	public ServicioCrearAuto servicioCrearAuto(RepositorioAuto repositorioAuto) {
+		return new ServicioCrearAuto(repositorioAuto);
+	}
 
-    @Bean
-    public ServicioEliminarUsuario servicioEliminarUsuario(RepositorioUsuario repositorioUsuario) {
-        return new ServicioEliminarUsuario(repositorioUsuario);
-    }
+	@Bean
+	public ServicioCambiarRentadoAuto servicioRentarAuto(RepositorioAuto repositorioAuto) {
+		return new ServicioCambiarRentadoAuto(repositorioAuto);
+	}
 
-    @Bean
-    public ServicioActualizarUsuario servicioActualizarUsuario(RepositorioUsuario repositorioUsuario) {
-        return new ServicioActualizarUsuario(repositorioUsuario);
-    }
-    
-    @Bean
-    public ServicioCalcularRentaAuto servicioSolicitarRentarAuto() {
-        return new ServicioCalcularRentaAuto();
-    }
-    
-    @Bean
-    public ServicioGuardarRentaAuto servicioGuardarRentaAuto(RepositorioRentarAuto repositorioRentarAuto, RepositorioAuto repositorioAuto) {
-        return new ServicioGuardarRentaAuto(repositorioRentarAuto, repositorioAuto);
-    }
-	
+	@Bean
+	public ServicioCrearUsuario servicioCrearUsuario(RepositorioUsuario repositorioUsuario) {
+		return new ServicioCrearUsuario(repositorioUsuario);
+	}
+
+	@Bean
+	public ServicioEliminarUsuario servicioEliminarUsuario(RepositorioUsuario repositorioUsuario) {
+		return new ServicioEliminarUsuario(repositorioUsuario);
+	}
+
+	@Bean
+	public ServicioActualizarUsuario servicioActualizarUsuario(RepositorioUsuario repositorioUsuario) {
+		return new ServicioActualizarUsuario(repositorioUsuario);
+	}
+
+	@Bean
+	public ServicioCalcularRentaAuto servicioSolicitarRentarAuto(RepositorioAuto repositorioAuto) {
+		return new ServicioCalcularRentaAuto(repositorioAuto);
+	}
+
+	@Bean
+	public ServicioGuardarRentaAuto servicioGuardarRentaAuto(RepositorioRentarAuto repositorioRentarAuto,
+			RepositorioAuto repositorioAuto) {
+		return new ServicioGuardarRentaAuto(repositorioRentarAuto, repositorioAuto);
+	}
 
 }

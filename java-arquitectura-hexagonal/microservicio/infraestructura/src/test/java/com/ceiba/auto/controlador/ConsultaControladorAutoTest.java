@@ -33,7 +33,7 @@ public class ConsultaControladorAutoTest {
         mocMvc.perform(get("/autos")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(3)))
+                .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].placa", is("BZA485")));
     }
     

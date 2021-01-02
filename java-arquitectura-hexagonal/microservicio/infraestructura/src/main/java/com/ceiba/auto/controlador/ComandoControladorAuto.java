@@ -13,32 +13,23 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/auto")
-@Api(tags = { "Controlador comando auto"})
+@Api(tags = { "Controlador comando auto" })
 public class ComandoControladorAuto {
 
-    private final ManejadorCrearAuto manejadorCrearAuto;
+	private final ManejadorCrearAuto manejadorCrearAuto;
 	private final ManejadorRentarAuto manejadorRentarAuto;
 
-
-    @Autowired
-    public ComandoControladorAuto(ManejadorCrearAuto manejadorCrearAuto,
-    								ManejadorRentarAuto manejadorRentarAuto) {
-        this.manejadorCrearAuto = manejadorCrearAuto;
+	@Autowired
+	public ComandoControladorAuto(ManejadorCrearAuto manejadorCrearAuto, ManejadorRentarAuto manejadorRentarAuto) {
+		this.manejadorCrearAuto = manejadorCrearAuto;
 		this.manejadorRentarAuto = manejadorRentarAuto;
-		
-    }
 
-    @PostMapping
-    @ApiOperation("Crear Auto")
-    public ComandoRespuesta<Long> crear(@RequestBody ComandoAuto comandoAuto) {
-        return manejadorCrearAuto.ejecutar(comandoAuto);
-    }
-
-
-	@PutMapping(value="/{placa}")
-	@ApiOperation("rentar auto")
-	public void actualizar(@PathVariable String placa) {
-		
-		manejadorRentarAuto.ejecutar(placa);
 	}
+
+	@PostMapping
+	@ApiOperation("Crear Auto")
+	public ComandoRespuesta<Long> crear(@RequestBody ComandoAuto comandoAuto) {
+		return manejadorCrearAuto.ejecutar(comandoAuto);
+	}
+
 }

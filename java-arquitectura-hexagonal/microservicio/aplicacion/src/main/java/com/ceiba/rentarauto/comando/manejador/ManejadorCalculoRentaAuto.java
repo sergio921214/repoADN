@@ -1,8 +1,5 @@
 package com.ceiba.rentarauto.comando.manejador;
 
-import com.ceiba.manejador.ManejadorComandoRespuesta;
-import com.ceiba.rentarauto.comando.ComandoCalculoRentaAuto;
-
 import com.ceiba.rentarauto.servicio.ServicioCalcularRentaAuto;
 
 import org.springframework.stereotype.Component;
@@ -15,8 +12,7 @@ import com.ceiba.tarifa.modelo.dto.DtoTarifa;
 import com.ceiba.auto.modelo.dto.DtoAuto;
 
 @Component
-public class ManejadorCalculoRentaAuto
-		implements ManejadorComandoRespuesta<ComandoCalculoRentaAuto, ComandoRespuesta<Double>> {
+public class ManejadorCalculoRentaAuto {
 
 	private final ServicioCalcularRentaAuto servicioCalcularRentaAuto;
 	private final DaoAuto daoAuto;
@@ -30,14 +26,14 @@ public class ManejadorCalculoRentaAuto
 		this.daoTarifa = daoTarifa;
 	}
 
-	public ComandoRespuesta<Double> ejecutar(ComandoCalculoRentaAuto comandoCalculoRentaAuto) {
+	public ComandoRespuesta<Double> ejecutar(String placa, String fechaRenta, String fechaEntrega) {
 
-		DtoAuto auto = this.daoAuto.obtenerAutoPorPlaca(comandoCalculoRentaAuto.getPlaca());
+		DtoAuto auto = this.daoAuto.obtenerAutoPorPlaca(placa);
 		DtoTarifa tarifa = this.daoTarifa.obtenerTarifaPorTipoCombustible(auto.getTipoCombustible());
 		Double porcentaje = tarifa.getPorcentaje();
 
-		return new ComandoRespuesta<>(this.servicioCalcularRentaAuto.ejecutar(auto, porcentaje,
-				comandoCalculoRentaAuto.getFechaRenta(), comandoCalculoRentaAuto.getFechaEntrega()));
+		return new ComandoRespuesta<>(
+				this.servicioCalcularRentaAuto.ejecutar(auto, porcentaje, fechaRenta, fechaEntrega));
 
 	}
 

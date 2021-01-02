@@ -1,7 +1,6 @@
 package com.ceiba.rentarauto.controlador;
 
 import com.ceiba.ComandoRespuesta;
-import com.ceiba.rentarauto.comando.ComandoCalculoRentaAuto;
 import com.ceiba.rentarauto.comando.manejador.ManejadorCalculoRentaAuto;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +27,8 @@ public class ComandoControladorCalcularRentaAuto {
 	@ApiOperation("Calcular valor total de renta auto")
 	public ComandoRespuesta<Double> crear(@PathVariable("placa") String placa,
 			@PathVariable("fecharenta") String fechaRenta, @PathVariable("fechaentrega") String fechaEntrega) {
-		ComandoCalculoRentaAuto comandoCalculoRentaAuto = new ComandoCalculoRentaAuto(placa, fechaRenta, fechaEntrega);
 
-		return this.manejadorCalculoRentaAuto.ejecutar(comandoCalculoRentaAuto);
+		return this.manejadorCalculoRentaAuto.ejecutar(placa, fechaEntrega, fechaRenta);
 	}
 
 }

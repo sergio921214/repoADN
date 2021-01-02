@@ -22,9 +22,6 @@ public class RepositorioAutoMysql implements RepositorioAuto {
     @SqlStatement(namespace="auto", value="existe")
     private static String sqlExiste;
 
-    @SqlStatement(namespace="auto", value="existeExcluyendoId") 
-    private static String sqlExisteExcluyendoId;
-
     public RepositorioAutoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -49,12 +46,6 @@ public class RepositorioAutoMysql implements RepositorioAuto {
         this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlCambiarEstadoRentado,paramSource);
     }
 
-    @Override
-    public boolean existeExcluyendoId(Long id, String placa) {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("id", id);
-        paramSource.addValue(PLACA, placa);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId,paramSource, Boolean.class);
-    }
+
 }
 

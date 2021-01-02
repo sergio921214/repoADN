@@ -1,5 +1,6 @@
 package com.ceiba.auto.modelo.entidad;
 
+
 import lombok.Getter;
 import static com.ceiba.dominio.ValidadorArgumento.validarLongitudIgual;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;

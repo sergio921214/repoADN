@@ -33,8 +33,32 @@ public class ConsultaControladorAutoTest {
         mocMvc.perform(get("/autos")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(3)))
+                .andExpect(jsonPath("$[0].placa", is("BZA485")));
+    }
+    
+    @Test
+    public void listarDisponibles() throws Exception {
+        // arrange
+
+        // act - assert
+        mocMvc.perform(get("/autos/disponibles")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].placa", is("BZA485")));
+    }
+    
+    @Test
+    public void listarRentados() throws Exception {
+        // arrange
+
+        // act - assert
+        mocMvc.perform(get("/autos/rentados")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].placa", is("BZA486")));
     }
 
 }

@@ -53,7 +53,7 @@ public class UtilidadesFechaTest {
 		cal2.set(Calendar.MILLISECOND, 0);
 
 		// Assert
-		assertTrue(UtilidadesFecha.contarDiasDeSemana(cal1.getTime(), cal2.getTime()) == 2);
+		assertTrue(UtilidadesFecha.contarDiasFinSemana(cal1.getTime(), cal2.getTime()) == 2);
 	}
 
 	@Test

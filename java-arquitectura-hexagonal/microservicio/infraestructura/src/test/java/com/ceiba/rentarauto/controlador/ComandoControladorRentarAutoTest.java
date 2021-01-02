@@ -14,14 +14,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.ceiba.ApplicationMock;
-import com.ceiba.auto.controlador.ComandoControladorAuto;
 import com.ceiba.rentarauto.comando.ComandoRentarAuto;
 import com.ceiba.rentarauto.servicio.testdatabuilder.ComandoRentarAutoTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ApplicationMock.class)
-@WebMvcTest(ComandoControladorAuto.class)
+@WebMvcTest(ComandoControladorRentarAuto.class)
 public class ComandoControladorRentarAutoTest {
 	
 	@Autowired

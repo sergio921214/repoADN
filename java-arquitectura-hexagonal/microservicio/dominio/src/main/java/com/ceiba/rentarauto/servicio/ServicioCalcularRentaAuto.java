@@ -26,7 +26,7 @@ public class ServicioCalcularRentaAuto {
 		Date fechaEntregaDate = UtilidadesFecha.convertirStringADate(fechaEntrega, "yyyy-MM-dd");
 		Double precioPorDiaTarifaCombustible = porcentaje * auto.getPrecioPorDia();
 		Double precioPorDiaFinSemana = precioPorDiaTarifaCombustible * auto.getMultiplicadorFinSemana();
-		Integer diasFinSemana = UtilidadesFecha.contarDiasFinSemana(fechaRentaDate, fechaEntregaDate);
+		Integer diasFinSemana =UtilidadesFecha.contarDiasFinSemana(fechaRentaDate, fechaEntregaDate);
 		Integer diasDeSemana = UtilidadesFecha.contarDiasDeSemana(fechaRentaDate, fechaEntregaDate);
 		Double precioTotalFinSemana = precioPorDiaFinSemana * diasFinSemana;
 		Double precioTotalDiasDeSemana = precioPorDiaTarifaCombustible * diasDeSemana;

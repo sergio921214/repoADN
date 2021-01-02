@@ -1,4 +1,4 @@
-package com.ceiba.rentarautoservicio;
+package com.ceiba.rentarauto.servicio;
 
 import org.junit.Test;
 import org.mockito.Mockito;

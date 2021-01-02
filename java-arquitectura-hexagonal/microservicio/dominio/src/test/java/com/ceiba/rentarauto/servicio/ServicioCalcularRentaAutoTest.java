@@ -1,4 +1,4 @@
-package com.ceiba.rentarautoservicio;
+package com.ceiba.rentarauto.servicio;
 
 import static org.junit.Assert.assertEquals;
 

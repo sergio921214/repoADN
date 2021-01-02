@@ -25,3 +25,9 @@ CREATE TABLE `rentarauto` (
   PRIMARY KEY (`id`)
 );
 
+CREATE TABLE `tarifa` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `tipoCombustible` varchar(45) DEFAULT NULL,
+  `porcentaje` double DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ;

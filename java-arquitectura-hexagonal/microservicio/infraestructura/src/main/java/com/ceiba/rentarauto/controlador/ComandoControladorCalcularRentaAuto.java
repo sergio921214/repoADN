@@ -28,7 +28,7 @@ public class ComandoControladorCalcularRentaAuto {
 	public ComandoRespuesta<Double> crear(@PathVariable("placa") String placa,
 			@PathVariable("fecharenta") String fechaRenta, @PathVariable("fechaentrega") String fechaEntrega) {
 
-		return this.manejadorCalculoRentaAuto.ejecutar(placa, fechaEntrega, fechaRenta);
+		return this.manejadorCalculoRentaAuto.ejecutar(placa, fechaRenta, fechaEntrega);
 	}
 
 }

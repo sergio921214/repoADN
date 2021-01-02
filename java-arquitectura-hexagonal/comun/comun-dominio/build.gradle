@@ -1,8 +1,29 @@
 apply plugin: 'java'
+apply plugin: 'jacoco'
 apply plugin: 'eclipse'
 
 sourceCompatibility = '11'
 
 repositories {
 	mavenCentral()
+}
+
+dependencies {
+	implementation project.ext.h2
+	implementation project.ext.mockito
+	testImplementation project.ext.junit4
+	testImplementation project.ext.junit5
+	implementation project.ext.junit4
+	implementation project.ext.junit5
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled true
+		html.enabled true
+	}
+}
+
+test {
+	finalizedBy jacocoTestReport
 }

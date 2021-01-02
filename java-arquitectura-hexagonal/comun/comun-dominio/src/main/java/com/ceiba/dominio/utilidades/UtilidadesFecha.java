@@ -7,7 +7,7 @@ import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 
 import java.text.ParseException;
 
-public class UtilidadesFecha  {
+public final class UtilidadesFecha  {
 	
 	private static final String SE_DEBE_INGRESAR_UN_FORMATO_DE_FECHA_YYYYMMDD = "Se debe ingresar un formato de fecha yyyy-mm-dd";
 

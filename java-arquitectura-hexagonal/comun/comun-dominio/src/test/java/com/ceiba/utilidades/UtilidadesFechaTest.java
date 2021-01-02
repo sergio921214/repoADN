@@ -38,9 +38,11 @@ public class UtilidadesFechaTest {
 		// Crear String de fecha
 		String strFecha = "2020/12/25";
 		// Obtener resultado
-		BasePrueba.assertThrows(() -> UtilidadesFecha.convertirStringADate(strFecha, "yyyy-MM-dd"), ExcepcionValorInvalido.class,"Se debe ingresar un formato de fecha yyyy-mm-dd");
+		BasePrueba.assertThrows(() -> UtilidadesFecha.convertirStringADate(strFecha, "yyyy-MM-dd"),
+				ExcepcionValorInvalido.class, "Se debe ingresar un formato de fecha yyyy-mm-dd");
 	}
-	
+
+	@Test
 	public void contarDiasFinSemanaTest() {
 		// Crear calendar para test
 		Calendar cal1 = Calendar.getInstance();
@@ -49,14 +51,12 @@ public class UtilidadesFechaTest {
 		cal1.set(Calendar.MILLISECOND, 0);
 		cal2.set(2020, 11, 30, 0, 0, 0);
 		cal2.set(Calendar.MILLISECOND, 0);
-		
 
-		// Act
-		Integer diasFinSemana = UtilidadesFecha.contarDiasFinSemana(cal1.getTime(),cal2.getTime());
 		// Assert
-		assertTrue(diasFinSemana==2);
+		assertTrue(UtilidadesFecha.contarDiasDeSemana(cal1.getTime(), cal2.getTime()) == 2);
 	}
 
+	@Test
 	public void contarDiasSemanaTest() {
 		// Crear calendar para test
 		Calendar cal1 = Calendar.getInstance();
@@ -65,11 +65,8 @@ public class UtilidadesFechaTest {
 		cal1.set(Calendar.MILLISECOND, 0);
 		cal2.set(2020, 11, 30, 0, 0, 0);
 		cal2.set(Calendar.MILLISECOND, 0);
-		
 
-		// Act
-		Integer diasSemana = UtilidadesFecha.contarDiasDeSemana(cal1.getTime(),cal2.getTime());
 		// Assert
-		assertTrue(diasSemana==3);
+		assertTrue(UtilidadesFecha.contarDiasDeSemana(cal1.getTime(), cal2.getTime()) == 3);
 	}
 }

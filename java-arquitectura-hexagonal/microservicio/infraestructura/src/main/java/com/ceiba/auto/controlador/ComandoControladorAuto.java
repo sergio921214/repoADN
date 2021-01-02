@@ -3,7 +3,7 @@ package com.ceiba.auto.controlador;
 import com.ceiba.ComandoRespuesta;
 import com.ceiba.auto.comando.ComandoAuto;
 import com.ceiba.auto.comando.manejador.ManejadorCrearAuto;
-import com.ceiba.auto.comando.manejador.ManejadorRentarAuto;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,12 +17,11 @@ import io.swagger.annotations.ApiOperation;
 public class ComandoControladorAuto {
 
 	private final ManejadorCrearAuto manejadorCrearAuto;
-	private final ManejadorRentarAuto manejadorRentarAuto;
+	
 
 	@Autowired
-	public ComandoControladorAuto(ManejadorCrearAuto manejadorCrearAuto, ManejadorRentarAuto manejadorRentarAuto) {
+	public ComandoControladorAuto(ManejadorCrearAuto manejadorCrearAuto) {
 		this.manejadorCrearAuto = manejadorCrearAuto;
-		this.manejadorRentarAuto = manejadorRentarAuto;
 
 	}
 

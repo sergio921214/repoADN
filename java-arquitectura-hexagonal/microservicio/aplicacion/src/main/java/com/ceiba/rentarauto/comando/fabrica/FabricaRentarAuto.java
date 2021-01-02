@@ -13,7 +13,7 @@ public class FabricaRentarAuto {
         		comandoRentarAuto.getPlaca(),
         		comandoRentarAuto.getFechaRenta(),
         		comandoRentarAuto.getFechaEntrega(),
-        		comandoRentarAuto.getPrecioRenta()
+        		comandoRentarAuto.getPrecioTotalRenta()
         		
         );
     }

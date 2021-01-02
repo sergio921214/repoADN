@@ -16,3 +16,12 @@ CREATE TABLE `auto` (
   PRIMARY KEY (`id`)
 );
 
+CREATE TABLE `rentarauto` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `placa` varchar(45) DEFAULT NULL,
+  `fechaRenta` date DEFAULT NULL,
+  `fechaEntrega` date DEFAULT NULL,
+  `precioTotalRenta` double DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+

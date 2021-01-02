@@ -14,8 +14,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ComandoRentarAuto{
 
-    private String placa;
-    private LocalDate fechaRenta;
-    private LocalDate fechaEntrega;
-    private Double precioRenta;
+	private String placa;
+	private LocalDate fechaRenta;
+	private LocalDate fechaEntrega;
+	private Double precioTotalRenta;
 }

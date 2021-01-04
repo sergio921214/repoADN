@@ -29,7 +29,6 @@ public class ManejadorCalculoRentaAuto {
 
 		DtoAuto auto = this.daoAuto.obtenerAutoPorPlaca(placa);
 		Double porcentaje = this.daoTarifa.obtenerTarifaPorTipoCombustible(auto.getTipoCombustible());
-		System.out.println("este es el porcentaje" + porcentaje);
 		return new ComandoRespuesta<>(
 				this.servicioCalcularRentaAuto.ejecutar(auto, porcentaje, fechaRenta, fechaEntrega));
 

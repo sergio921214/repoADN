@@ -27,7 +27,6 @@ public class ControladorListarTiposCombustible {
 	@GetMapping()
 	@ApiOperation("Listar tipo de combustible")
 	public List<String> listar() {
-		System.out.println("LLEGA LA PETICION");
 		return this.manejadorListarTiposCombustible.ejecutar();
 	}
 

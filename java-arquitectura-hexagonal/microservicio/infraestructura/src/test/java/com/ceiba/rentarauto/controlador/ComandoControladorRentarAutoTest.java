@@ -37,7 +37,7 @@ public class ComandoControladorRentarAutoTest {
 		// act - assert
 		mocMvc.perform(
 				post("/rentauto").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(auto)))
-				.andExpect(status().isOk()).andExpect(content().json("{'valor': 1}"));
+				.andExpect(status().isOk()).andExpect(content().json("{'valor': 2}"));
 	}
 
 }

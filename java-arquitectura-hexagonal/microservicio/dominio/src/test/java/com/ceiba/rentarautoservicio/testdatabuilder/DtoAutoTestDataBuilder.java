@@ -4,18 +4,15 @@ import com.ceiba.auto.modelo.dto.DtoAuto;
 
 public class DtoAutoTestDataBuilder {
 
-	private Long id;
 	private String placa;
 	private String tipoCombustible;
-	private Boolean rentado;
 	private Double precioPorDia;
 	private Double multiplicadorFinSemana;
 
 	public DtoAutoTestDataBuilder() {
-		id = 1L;
+		
 		placa = "ABC321";
 		tipoCombustible = "ELECTRICO";
-		rentado = false;
 		precioPorDia = 50000.0;
 		multiplicadorFinSemana = 3.0;
 
@@ -42,6 +39,6 @@ public class DtoAutoTestDataBuilder {
 	}
 
 	public DtoAuto build() {
-		return new DtoAuto(id, placa, tipoCombustible, rentado, precioPorDia, multiplicadorFinSemana);
+		return new DtoAuto(placa, tipoCombustible, precioPorDia, multiplicadorFinSemana);
 	}
 }

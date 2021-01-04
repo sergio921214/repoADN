@@ -1,2 +1,2 @@
-select id,tipoCombustible,porcentaje
+select tipoCombustible
 from tarifa

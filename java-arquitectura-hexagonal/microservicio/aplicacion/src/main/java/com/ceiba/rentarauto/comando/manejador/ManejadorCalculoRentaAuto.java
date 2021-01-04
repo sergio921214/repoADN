@@ -8,7 +8,6 @@ import com.ceiba.ComandoRespuesta;
 
 import com.ceiba.auto.puerto.dao.DaoAuto;
 import com.ceiba.tarifa.puerto.dao.DaoTarifa;
-import com.ceiba.tarifa.modelo.dto.DtoTarifa;
 import com.ceiba.auto.modelo.dto.DtoAuto;
 
 @Component
@@ -29,9 +28,8 @@ public class ManejadorCalculoRentaAuto {
 	public ComandoRespuesta<Double> ejecutar(String placa, String fechaRenta, String fechaEntrega) {
 
 		DtoAuto auto = this.daoAuto.obtenerAutoPorPlaca(placa);
-		DtoTarifa tarifa = this.daoTarifa.obtenerTarifaPorTipoCombustible(auto.getTipoCombustible());
-		Double porcentaje = tarifa.getPorcentaje();
-
+		Double porcentaje = this.daoTarifa.obtenerTarifaPorTipoCombustible(auto.getTipoCombustible());
+		System.out.println("este es el porcentaje" + porcentaje);
 		return new ComandoRespuesta<>(
 				this.servicioCalcularRentaAuto.ejecutar(auto, porcentaje, fechaRenta, fechaEntrega));
 

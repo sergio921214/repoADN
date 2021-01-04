@@ -1,3 +1,3 @@
-select id,tipoCombustible,porcentaje
+select porcentaje
 from tarifa
 where tipoCombustible = :tipoCombustible

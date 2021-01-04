@@ -5,9 +5,9 @@ import org.junit.Test;
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.ValidadorArgumento;
 import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
-import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
+
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
-import com.ceiba.dominio.utilidades.UtilidadesFecha;
+
 
 public class ExcepcionesTest {
 
@@ -25,6 +25,15 @@ public class ExcepcionesTest {
 
 		// Obtener resultado
 		BasePrueba.assertThrows(() -> ValidadorArgumento.validarLongitud("aut", 4, "longitud invalida"),
+				ExcepcionLongitudValor.class, "longitud invalida");
+
+	}
+	
+	@Test
+	public void validarLongitudIgualTest() {
+
+		// Obtener resultado
+		BasePrueba.assertThrows(() -> ValidadorArgumento.validarLongitudIgual("aut", 4, "longitud invalida"),
 				ExcepcionLongitudValor.class, "longitud invalida");
 
 	}

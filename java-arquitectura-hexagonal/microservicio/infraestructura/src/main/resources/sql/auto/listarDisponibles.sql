@@ -1,3 +1,3 @@
-select id,placa,tipoCombustible,rentado,precioPorDia,multiplicadorFinSemana
+select placa,tipoCombustible,precioPorDia,multiplicadorFinSemana
 from auto
 where rentado = 0

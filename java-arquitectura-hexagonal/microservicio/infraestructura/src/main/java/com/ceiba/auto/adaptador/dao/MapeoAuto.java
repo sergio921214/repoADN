@@ -12,14 +12,12 @@ public class MapeoAuto implements RowMapper<DtoAuto>, MapperResult {
 	@Override
 	public DtoAuto mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
-		Long id = resultSet.getLong("id");
 		String placa = resultSet.getString("placa");
 		String tipoCombustible = resultSet.getString("tipoCombustible");
-		Boolean rentado = resultSet.getBoolean("rentado");
 		Double precioPorDia = resultSet.getDouble("precioPorDia");
 		Double multiplicadorFinSemana = resultSet.getDouble("multiplicadorFinSemana");
 
-		return new DtoAuto(id, placa, tipoCombustible, rentado, precioPorDia, multiplicadorFinSemana);
+		return new DtoAuto( placa, tipoCombustible, precioPorDia, multiplicadorFinSemana);
 	}
 
 }

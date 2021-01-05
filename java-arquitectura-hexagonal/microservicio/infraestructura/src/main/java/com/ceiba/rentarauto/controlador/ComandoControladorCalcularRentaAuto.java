@@ -10,7 +10,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@CrossOrigin(origins = "*")
+
 @RequestMapping("/rentauto")
 @Api(tags = { "Controlador comando solicitar renta auto" })
 public class ComandoControladorCalcularRentaAuto {

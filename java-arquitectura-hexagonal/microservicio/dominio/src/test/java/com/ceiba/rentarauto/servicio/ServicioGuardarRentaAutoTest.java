@@ -12,8 +12,6 @@ import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.rentarauto.modelo.entidad.RentarAuto;
 import com.ceiba.rentarauto.puerto.repositorio.RepositorioRentarAuto;
 
-import com.ceiba.rentarauto.servicio.ServicioGuardarRentaAuto;
-
 import com.ceiba.rentarautoservicio.testdatabuilder.RentarAutoTestDatabuilder;
 
 public class ServicioGuardarRentaAutoTest {
@@ -52,7 +50,7 @@ public class ServicioGuardarRentaAutoTest {
 		RentarAuto rentarAuto = new RentarAutoTestDatabuilder().build();
 		RepositorioAuto repositorioAuto = Mockito.mock(RepositorioAuto.class);
 		RepositorioRentarAuto repositorioRentarAuto = Mockito.mock(RepositorioRentarAuto.class);
-		//Mockito.when(repositorioAuto.existe(Mockito.anyString())).thenReturn(true);
+		// Mockito.when(repositorioAuto.existe(Mockito.anyString())).thenReturn(true);
 		Mockito.when(repositorioRentarAuto.existe(Mockito.anyString())).thenReturn(true);
 		ServicioGuardarRentaAuto servicioGuardarRentaAuto = new ServicioGuardarRentaAuto(repositorioRentarAuto,
 				repositorioAuto);

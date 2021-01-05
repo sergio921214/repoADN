@@ -2,7 +2,6 @@ package com.ceiba.tarifa.controlador;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +12,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("/tipo-combustible")
 @Api(tags = { "Controlador consulta tipo combustible" })
 public class ControladorListarTiposCombustible {

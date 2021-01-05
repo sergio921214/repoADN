@@ -26,6 +26,12 @@ public interface DaoAuto {
     List<DtoAuto> listarRentados();
     
     /**
+     * Permite listar autos
+     * @return los autos rentados
+     */
+    List<String> listarPlacasDisponibles();
+    
+    /**
      * Permite obtener auto por placa
      * @return auto por placa
      */

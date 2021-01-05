@@ -1,5 +1,7 @@
 package com.ceiba.auto.adaptador.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
@@ -7,6 +9,7 @@ import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 
 import com.ceiba.auto.puerto.dao.DaoAuto;
 
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +28,9 @@ public class DaoAutoMysql implements DaoAuto {
     
     @SqlStatement(namespace="auto", value="listarRentados")
     private static String sqlListarRentados;
+    
+    @SqlStatement(namespace="auto", value="listarPlacasDisponibles")
+    private static String sqlListarPlacasDisponibles;
     
     @SqlStatement(namespace="auto", value="obtenerAutoPorPlaca")
     private static String sqlObtenerAutoPorPlaca;
@@ -52,5 +58,15 @@ public class DaoAutoMysql implements DaoAuto {
         paramSource.addValue("placa", placa);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerAutoPorPlaca,paramSource, new MapeoAuto());
 		
+	}
+
+	@Override
+	public List<String> listarPlacasDisponibles() {
+		
+		return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListarPlacasDisponibles, new RowMapper<String>() {
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+				return rs.getString(1);
+			}
+		});
 	}
 }

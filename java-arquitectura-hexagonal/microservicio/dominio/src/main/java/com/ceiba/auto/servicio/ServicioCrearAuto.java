@@ -1,6 +1,6 @@
 package com.ceiba.auto.servicio;
 
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.auto.modelo.entidad.Auto;
 import com.ceiba.auto.puerto.repositorio.RepositorioAuto;
 
@@ -22,7 +22,7 @@ public class ServicioCrearAuto {
     private void validarExistenciaPrevia(Auto auto) {
         boolean existe = this.repositorioAuto.existe(auto.getPlaca());
         if(existe) {
-            throw new ExcepcionDuplicidad(EL_AUTO_YA_EXISTE_EN_EL_SISTEMA);
+            throw new ExcepcionValorInvalido(EL_AUTO_YA_EXISTE_EN_EL_SISTEMA);
         }
     }
 

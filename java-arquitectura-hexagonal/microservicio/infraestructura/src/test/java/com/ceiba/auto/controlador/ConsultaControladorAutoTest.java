@@ -1,7 +1,6 @@
 package com.ceiba.auto.controlador;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -33,7 +32,6 @@ public class ConsultaControladorAutoTest {
         mocMvc.perform(get("/autos")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(3)))
                 .andExpect(jsonPath("$[0].placa", is("BZA485")));
     }
     
@@ -44,8 +42,7 @@ public class ConsultaControladorAutoTest {
         // act - assert
         mocMvc.perform(get("/autos/disponibles")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(status().isOk())                
                 .andExpect(jsonPath("$[0].placa", is("BZA485")));
     }
     
@@ -57,7 +54,6 @@ public class ConsultaControladorAutoTest {
         mocMvc.perform(get("/autos/rentados")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].placa", is("BZA486")));
     }
 

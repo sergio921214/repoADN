@@ -2,7 +2,7 @@ package com.ceiba.rentarauto.servicio;
 
 import java.util.Date;
 
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.utilidades.UtilidadesFecha;
 
 import com.ceiba.auto.modelo.dto.DtoAuto;
@@ -26,7 +26,7 @@ public class ServicioCalcularRentaAuto {
 		Date fechaEntregaDate = UtilidadesFecha.convertirStringADate(fechaEntrega, "yyyy-MM-dd");
 		Double precioPorDiaTarifaCombustible = porcentaje * auto.getPrecioPorDia();
 		Double precioPorDiaFinSemana = precioPorDiaTarifaCombustible * auto.getMultiplicadorFinSemana();
-		Integer diasFinSemana =UtilidadesFecha.contarDiasFinSemana(fechaRentaDate, fechaEntregaDate);
+		Integer diasFinSemana = UtilidadesFecha.contarDiasFinSemana(fechaRentaDate, fechaEntregaDate);
 		Integer diasDeSemana = UtilidadesFecha.contarDiasDeSemana(fechaRentaDate, fechaEntregaDate);
 		Double precioTotalFinSemana = precioPorDiaFinSemana * diasFinSemana;
 		Double precioTotalDiasDeSemana = precioPorDiaTarifaCombustible * diasDeSemana;
@@ -38,7 +38,7 @@ public class ServicioCalcularRentaAuto {
 	private void validarExistenciaPrevia(String placa) {
 		boolean existe = this.repositorioAuto.existe(placa);
 		if (!existe) {
-			throw new ExcepcionDuplicidad(EL_AUTO_NO_EXISTE_EN_EL_SISTEMA);
+			throw new ExcepcionValorInvalido(EL_AUTO_NO_EXISTE_EN_EL_SISTEMA);
 		}
 	}
 

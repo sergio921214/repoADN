@@ -1,7 +1,7 @@
 package com.ceiba.rentarauto.servicio;
 
 import com.ceiba.auto.puerto.repositorio.RepositorioAuto;
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.rentarauto.modelo.entidad.RentarAuto;
 import com.ceiba.rentarauto.puerto.repositorio.RepositorioRentarAuto;
 
@@ -29,7 +29,7 @@ public class ServicioGuardarRentaAuto {
 	private void validarExistenciaPrevia(RentarAuto rentarAuto) {
 		boolean existe = this.repositorioRentarAuto.existe(rentarAuto.getPlaca());
 		if (existe) {
-			throw new ExcepcionDuplicidad(LA_RENTA_YA_EXISTE_EN_EL_SISTEMA);
+			throw new ExcepcionValorInvalido(LA_RENTA_YA_EXISTE_EN_EL_SISTEMA);
 		}
 	}
 

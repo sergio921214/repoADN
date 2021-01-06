@@ -39,7 +39,6 @@ public class ConsultaControladorRentarAutoTest {
         mocMvc.perform(get("/rentauto/listarentautos")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].placa", is(lista.get(0).getPlaca())));
     }
     

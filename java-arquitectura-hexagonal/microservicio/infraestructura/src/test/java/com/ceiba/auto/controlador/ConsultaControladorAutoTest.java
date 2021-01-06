@@ -1,7 +1,6 @@
 package com.ceiba.auto.controlador;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -45,19 +44,21 @@ public class ConsultaControladorAutoTest {
 	@Test
 	public void listarDisponibles() throws Exception {
 		// arrange
-
+		List<DtoAuto> retornoAutos;
+		retornoAutos = daoAuto.listarDisponibles();
 		// act - assert
 		mocMvc.perform(get("/autos/disponibles").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
-				.andExpect(jsonPath("$[0].placa", is("BZA485")));
+				.andExpect(jsonPath("$[0].placa", is(retornoAutos.get(0).getPlaca())));
 	}
 
 	@Test
 	public void listarRentados() throws Exception {
 		// arrange
-
+		List<DtoAuto> retornoAutos;
+		retornoAutos = daoAuto.listarRentados();
 		// act - assert
 		mocMvc.perform(get("/autos/rentados").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
-				.andExpect(jsonPath("$[0].placa", is("BZA486")));
+				.andExpect(jsonPath("$[0].placa", is(retornoAutos.get(0).getPlaca())));
 	}
 
 }
